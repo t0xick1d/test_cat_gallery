@@ -1,0 +1,33 @@
+@import './vars.scss';
+
+.app {
+ min-width: 100%;
+ @extend %display-center;
+ color: $text-main-color;
+ font-family: $main-fonts;
+ letter-spacing: 0em;
+ font-weight: 400;
+ text-align: center;
+}
+.mainContainer{ 
+ min-width: 100%;
+  @extend %display-center;
+}
+.section{ 
+ min-width: 100%;
+ outline: 1px solid rgba(196, 196, 196, 1);
+ background-color: rgba(255, 255, 255, 1);
+  &::-webkit-scrollbar { width: 0 !important }
+}
+@media screen and (min-width: $screen-tablet) {
+  .mainContainer {
+    display: flex; 
+  }
+}
+.listCat{ 
+ display: flex;
+ flex-wrap: wrap;
+ gap: 10;
+ margin-top: 65px;
+ width: 100%;
+}
