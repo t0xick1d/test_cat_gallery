@@ -3,11 +3,12 @@ export interface CatI {
    url: string;
    width: number;
    height: number;
+   name: string;
    mime_type: string;
-   breeds: [BreedI];
+   breeds: [];
    categories: [];
 }
-interface BreedI {
+export interface BreedI {
    id: number;
    name: string;
    weight: string;

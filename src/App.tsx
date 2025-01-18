@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import NavBar from './component/NavBar/NavBar.tsx';
-import Search from './pages/search/Serch.tsx';
-import Liked from './pages/liked/Liked.tsx';
+import NavBar from './component/NavBar/NavBar';
+import Search from './pages/search/Serch';
+import Liked from './pages/liked/Liked';
 
-function App(): React.FC {
+function App() {
    return (
-      <div className="bg-zinc-300">
+      <div className=" w-screen h-full bg-zinc-300">
          <NavBar />
-         <div className="bg-zinc-300">
+         <div>
             <Routes>
                <Route path="/">
                   <Route path="/search" element={<Search />} />

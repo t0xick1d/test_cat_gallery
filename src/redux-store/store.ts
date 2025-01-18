@@ -10,8 +10,8 @@ import {
    REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import catReducer from './catSlice/catSlice.ts';
-import { catApi } from './catSlice/catApi.ts';
+import catReducer from './catSlice/catSlice';
+import { catApi } from './catSlice/catApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 const likedPersistConfig = {
@@ -20,19 +20,19 @@ const likedPersistConfig = {
    whitelist: ['likedCat'],
 };
 
+const persistedCatReducer = persistReducer(likedPersistConfig, catReducer);
+
 export const store = configureStore({
    reducer: {
-      cat: persistReducer(likedPersistConfig, catReducer),
+      cat: persistedCatReducer,
       [catApi.reducerPath]: catApi.reducer,
    },
-   middleware: (getDefaultMiddleware) => [
-      ...getDefaultMiddleware({
+   middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
          serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
          },
-      }),
-      catApi.middleware,
-   ],
+      }).concat(catApi.middleware),
 });
 
 setupListeners(store.dispatch);

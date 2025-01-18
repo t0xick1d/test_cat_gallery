@@ -1,14 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ItemList from '../../component/itemList/ItemList.tsx';
+import ItemList from '../../component/itemList/ItemList';
+import { RootState } from '../../redux-store/store';
 
 const Liked: React.FC = () => {
-   const likeCatList = useSelector((state) => state.cat.likedCat);
+   const likeCatList = useSelector((state: RootState) => state.cat.likedCat);
    console.log(likeCatList);
+
    return (
       <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 p-5">
          {likeCatList.map((e) => {
-            return <ItemList key={e._id} catItem={e} unLike={true} />;
+            return <ItemList key={e.id} catItem={e} url={e.url} unLike={true} />;
          })}
       </ul>
    );

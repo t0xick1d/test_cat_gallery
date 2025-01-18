@@ -1,23 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CatI } from '../../types/CatInterface';
 
-export interface catState {
-   likedCat: [];
-   value: 0;
+export interface catStateI {
+   likedCat: CatI[];
 }
 
-const initialState: catState = {
+const initialState: catStateI = {
    likedCat: [],
-   value: 0,
 };
 
 export const catSlice = createSlice({
    name: 'cat',
    initialState,
    reducers: {
-      addToLiked: (state, action) => {
+      addToLiked: (state, action: PayloadAction<CatI>) => {
          state.likedCat.push(action.payload);
       },
-      removeToLiked: (state, action) => {
+      removeToLiked: (state, action: PayloadAction<CatI>) => {
          state.likedCat = state.likedCat.filter((e) => e.id !== action.payload.id);
          console.log(action);
          console.log(state.likedCat);
