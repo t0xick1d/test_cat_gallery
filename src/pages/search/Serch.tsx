@@ -8,13 +8,7 @@ const Search: React.FC = () => {
       return (
          <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 p-5">
             {data.map((e) => {
-               return (
-                  <ItemList
-                     key={e._id}
-                     name={e.breeds[0] === undefined ? 'null' : e.breeds[0].name}
-                     url={e.url}
-                  />
-               );
+               return <ItemList key={e._id} catItem={e} unLike={false} />;
             })}
          </ul>
       );

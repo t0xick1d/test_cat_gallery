@@ -7,7 +7,7 @@ import Liked from './pages/liked/Liked.tsx';
 
 function App(): React.FC {
    return (
-      <div className="App">
+      <div className="bg-zinc-300">
          <NavBar />
          <div className="bg-zinc-300">
             <Routes>

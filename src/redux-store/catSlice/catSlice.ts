@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface catState {
-   value: number;
+   likedCat: [];
+   value: 0;
 }
 
 const initialState: catState = {
+   likedCat: [],
    value: 0,
 };
 
@@ -13,18 +14,17 @@ export const catSlice = createSlice({
    name: 'cat',
    initialState,
    reducers: {
-      increment: (state) => {
-         state.value += 1;
+      addToLiked: (state, action) => {
+         state.likedCat.push(action.payload);
       },
-      decrement: (state) => {
-         state.value -= 1;
-      },
-      incrementByAmount: (state, action: PayloadAction<number>) => {
-         state.value += action.payload;
+      removeToLiked: (state, action) => {
+         state.likedCat = state.likedCat.filter((e) => e.id !== action.payload.id);
+         console.log(action);
+         console.log(state.likedCat);
       },
    },
 });
 
-export const { increment, decrement, incrementByAmount } = catSlice.actions;
+export const { addToLiked, removeToLiked } = catSlice.actions;
 
 export default catSlice.reducer;
