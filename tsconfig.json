@@ -18,6 +18,7 @@
       "esModuleInterop": true
    },
    "exclude": [
+      "tailwind.config.js",
       "node_modules",
       "build",
       "scripts",

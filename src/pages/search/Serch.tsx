@@ -16,7 +16,7 @@ const Search: React.FC = () => {
    if (isLoading && isLoadingBreed) {
       return <Spinner />;
    }
-   if (error && errorBreed) {
+   if (error || errorBreed) {
       return <div>Error </div>;
    }
    if (!isLoading && inputSearch === '') {
@@ -111,9 +111,9 @@ const Search: React.FC = () => {
       dataBreed?.length === 0
    ) {
       return (
-         <div className="flex items-center flex-col p-5">
+         <div className="flex  items-center flex-col p-5">
             <form className="w-1/2 ">
-               <div className="relative">
+               <div className="relative  ">
                   <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                      <svg
                         className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -139,9 +139,11 @@ const Search: React.FC = () => {
                   />
                </div>
             </form>
-            <p className="text-red-600 text-4xl font-extrabold text-gray-900 p-15 dark:text-white flex flex-col item-center ">
-               Nothing found
-            </p>
+            <div className="h-screen">
+               <p className="text-red-600 text-4xl font-extrabold text-gray-900 p-20 dark:text-white flex flex-col item-center ">
+                  Nothing found
+               </p>
+            </div>
          </div>
       );
    }
