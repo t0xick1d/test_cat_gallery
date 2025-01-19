@@ -10,7 +10,7 @@ function App() {
          <NavBar />
          <div>
             <Routes>
-               <Route path="/">
+               <Route path="/" element={<Search />}>
                   <Route path="/search" element={<Search />} />
                   <Route index path="/liked" element={<Liked />} />
                   <Route path="/*" element={<div>404 Error</div>} />
