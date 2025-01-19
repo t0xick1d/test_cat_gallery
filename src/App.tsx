@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import NavBar from './component/NavBar/NavBar';
 import Search from './pages/search/Serch';
@@ -10,9 +10,10 @@ function App() {
          <NavBar />
          <div>
             <Routes>
-               <Route path="/" element={<Search />}>
+               <Route path="/">
+                  <Route index element={<Navigate to="/search" replace />} />
                   <Route path="/search" element={<Search />} />
-                  <Route index path="/liked" element={<Liked />} />
+                  <Route path="/liked" element={<Liked />} />
                   <Route path="/*" element={<div>404 Error</div>} />
                </Route>
             </Routes>
